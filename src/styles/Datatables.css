@@ -1,3 +1,49 @@
 .dtb {
     margin: 50px auto;
 }
+
+.dtb-table-header-row{
+    border-bottom: 2px solid #5b6f0c;
+}
+
+#dtb-entries-select,
+#dtb-search{
+    background-color: white;
+    color: #5b6f0c;
+    border-radius: 5px;
+    border: 1px solid #5b6f0c;
+}
+
+.dtb-entries,
+.dtb-search{
+    color: #5b6f0c;
+}
+
+.dtb-showing{
+    color: #5b6f0c;
+}
+
+.dtb-pagination-btn,
+.dtb-pagination-btn.active{
+    background-color: white;
+    color: #93ad18;
+    border: 1px solid white;
+}
+
+.dtb-pagination-btn:hover,
+.dtb-pagination-btn.active:hover{
+    background-color: white;
+    color: #5b6f0c;
+    border: 1px solid white;
+}
+
+.disabled,
+.disabled:hover{
+    color: lightgrey;
+}
+
+.dtb-table-row-nomatch, .dtb-table-row{
+    background-color: #f2f7dc;
+    color: #5b6f0c;
+    border-bottom: 1px solid #5b6f0c;
+}
