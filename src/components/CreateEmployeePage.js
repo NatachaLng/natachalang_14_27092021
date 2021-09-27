@@ -39,7 +39,7 @@ const CreateEmployeePage = ({ handleSubmit, handleOpenModal }) => {
             )}
             <Banner
                 pageTitle="Create Employee"
-                linkImg="../../public/images/logo.jpg"
+                linkImg="../assets/logo.jpg"
                 linkContent="View Current Employees"
                 linkSrc="/employee-list"
             />

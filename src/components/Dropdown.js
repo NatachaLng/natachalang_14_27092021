@@ -33,7 +33,7 @@ const Dropdown = ({
                 aria-haspopup={true}
             >
         <span>{selectValue.text}</span>
-        <img src="/public/images/down-arrow.png" alt="" className="dropdown-btn" />
+        <img src="../assets/down-arrow.png" alt="" className="dropdown-btn" />
       </span>
             <div className={isOpen ? "dropdown-options active" : "dropdown-options"}>
                 <ul className="dropdown-list" id={`${selectName}-menu`}>

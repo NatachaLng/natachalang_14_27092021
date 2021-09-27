@@ -4,6 +4,7 @@ import DataTables from "datatables-plugin-react";
 import { labels } from "../assets/data";
 
 import Banner from "./Banner";
+import '../styles/Datatables.css';
 
 const CurrentEmployeesPage = ({ employeesList }) => {
     const employeesData = employeesList.map((elt) => ({
@@ -16,7 +17,7 @@ const CurrentEmployeesPage = ({ employeesList }) => {
         <div className="current-employees">
             <Banner
                 pageTitle="Current Employees"
-                linkImg="../../public/images/logo.jpg"
+                linkImg="../assets/logo.jpg"
                 linkContent="Home"
                 linkSrc="/"
             />
