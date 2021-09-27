@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import '../styles/Dropdown.css'
+
 const Dropdown = ({
                       selectValue,
                       handleSelectChange,
@@ -31,7 +33,7 @@ const Dropdown = ({
                 aria-haspopup={true}
             >
         <span>{selectValue.text}</span>
-        <img src="./images/down-arrow.png" alt="" className="dropdown-btn" />
+        <img src="../../public/images/down-arrow.png" alt="" className="dropdown-btn" />
       </span>
             <div className={isOpen ? "dropdown-options active" : "dropdown-options"}>
                 <ul className="dropdown-list" id={`${selectName}-menu`}>
