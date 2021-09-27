@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './styles/App.css';
+import React, { useState } from "react";
+import { Switch, Route } from "react-router-dom";
 
-function App() {
+import CreateEmployeePage from "./CreateEmployeePage";
+import CurrentEmployeesPage from "./CurrentEmployeesPage";
+import Modal from "./Modal";
+
+const App = () => {
+  const [employees, setEmployees] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const createEmployee = (newEmployee) => {
+    setEmployees([...employees, newEmployee]);
+  };
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="app">
+        {isModalOpen && (
+            <Modal
+                modalContent="Employee Created!"
+                handleClose={handleCloseModal}
+            />
+        )}
+        <Switch>
+          <Route exact path="/p14-react/">
+            <CreateEmployeePage
+                handleSubmit={createEmployee}
+                handleOpenModal={handleOpenModal}
+            />
+          </Route>
+          <Route path="/p14-react/employee-list">
+            <CurrentEmployeesPage employeesList={employees} />
+          </Route>
+        </Switch>
+      </div>
   );
-}
+};
 
 export default App;
