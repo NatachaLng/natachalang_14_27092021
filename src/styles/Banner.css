@@ -1,0 +1,16 @@
+.banner {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+.banner h1 {
+    color: #5b6f0c;
+    margin-bottom: 10px;
+}
+.banner a {
+    color: #93ad18;
+}
+.banner h2 {
+    color: #5b6f0c;
+    margin-top: 20px;
+}
