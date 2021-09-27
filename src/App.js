@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import CreateEmployeePage from "./CreateEmployeePage";
-import CurrentEmployeesPage from "./CurrentEmployeesPage";
-import Modal from "./Modal";
+import CreateEmployeePage from "./components/CreateEmployeePage";
+import CurrentEmployeesPage from "./components/CurrentEmployee";
+import Modal from "./components/Modal";
 
 const App = () => {
   const [employees, setEmployees] = useState([]);
@@ -29,17 +29,19 @@ const App = () => {
                 handleClose={handleCloseModal}
             />
         )}
+        <BrowserRouter>
         <Switch>
-          <Route exact path="/p14-react/">
+          <Route exact path="/">
             <CreateEmployeePage
                 handleSubmit={createEmployee}
                 handleOpenModal={handleOpenModal}
             />
           </Route>
-          <Route path="/p14-react/employee-list">
+          <Route path="/employee-list">
             <CurrentEmployeesPage employeesList={employees} />
           </Route>
         </Switch>
+        </BrowserRouter>
       </div>
   );
 };

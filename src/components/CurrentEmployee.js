@@ -16,6 +16,7 @@ const CurrentEmployeesPage = ({ employeesList }) => {
         <div className="current-employees">
             <Banner
                 pageTitle="Current Employees"
+                linkImg="../../public/images/logo.jpg"
                 linkContent="Home"
                 linkSrc="/"
             />
