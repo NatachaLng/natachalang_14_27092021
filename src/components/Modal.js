@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useState } from 'react';
+import { Modal } from 'modal-for-react';
 
-import '../styles/Modal.css'
+export default function SuccessModal() {
+    const [isModalActive, setModalActive] = useState(false);
+    const handleClickModal = () => isModalActive ? setModalActive(false) : setModalActive(true);
 
-const Modal = ({ modalContent, handleClose }) => {
     return (
-        <>
-            <div className="modal-overlay" onClick={handleClose}></div>
-            <div className="modal">
-                <span className="modal-content">{modalContent}</span>
-                <button className="modal-close" type="button" onClick={handleClose}>
-                    <img src="../../public/images/close.png" alt="" />
-                </button>
-            </div>
-        </>
-    );
+        <div>
+            <Modal
+                handleClick={handleClickModal}
+                isActive={isModalActive}
+                backgroundStyle={{ backgroundColor:"rgba(255,255,255,1)" }}
+                contentStyle={{ color: "black" }}
+                refresh={true}
+            />
+        </div>
+    )
 };
-
-export default Modal;
