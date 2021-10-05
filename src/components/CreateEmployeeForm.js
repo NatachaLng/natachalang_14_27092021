@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { statesUSA, departments } from "../assets/data";
 
 import Dropdown from "./Dropdown";
+import DateSelector from "./DateSelector";
+
 
 const CreateEmployeeForm = ({
                                 handleSubmit,
@@ -10,6 +12,11 @@ const CreateEmployeeForm = ({
                                 openedElts,
                                 handleElementsOpening,
                             }) => {
+
+    const [initialDob, setInitialDob] = useState(null);
+    const [initialStartDate, setInitialStartDate] = useState(null);
+    const [setDob] = useState('');
+    const [startDate, setStartDate] = useState('');
     const [input, setInput] = useState({
         firstname: "",
         lastname: "",
@@ -41,6 +48,13 @@ const CreateEmployeeForm = ({
         });
     };
 
+    const handleDateChange = (date, state, displayState) => {
+        const dateString = date.toLocaleString('en-GB');
+        const dateArray = dateString.split(",");
+        displayState(date);
+        state(dateArray[0].replaceAll("/", "-"));
+    }
+
     return (
         <form className="create-employee-form" onSubmit={handleSubmitForm}>
             <label>
@@ -61,6 +75,10 @@ const CreateEmployeeForm = ({
                     onChange={handleInputChange}
                 />
             </label>
+            <label htmlFor="date-of-birth">Date of Birth</label>
+            <DateSelector name="date-of-birth" onChange={(date) => handleDateChange(date, setDob, setInitialDob)} selected={initialDob}/>
+            <label htmlFor="start-date">Start Date</label>
+            <DateSelector name="start-date" onChange={(date) => handleDateChange(date, setStartDate, setInitialStartDate)} selected={initialStartDate} />
             <fieldset>
                 <legend>Address</legend>
                 <label>
