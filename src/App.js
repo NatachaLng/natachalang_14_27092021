@@ -3,28 +3,28 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import CreateEmployeePage from "./components/CreateEmployeePage";
 import CurrentEmployeesPage from "./components/CurrentEmployee";
-import SuccessModal from "./components/Modal";
+import Modal from "./components/Modal";
 
 const App = () => {
   const [employees, setEmployees] = useState([]);
-  const [isModalActive, setIsModalActive] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const createEmployee = (newEmployee) => {
     setEmployees([...employees, newEmployee]);
   };
 
   const handleOpenModal = () => {
-    setIsModalActive(true);
+    setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    setIsModalActive(false);
+    setIsModalOpen(false);
   };
 
   return (
       <div className="app">
-        {isModalActive && (
-            <SuccessModal
+        {isModalOpen && (
+            <Modal
                 modalContent="Employee Created!"
                 handleClose={handleCloseModal}
             />
