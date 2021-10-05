@@ -6,7 +6,6 @@
     border: 1px solid #5b6f0c;
     border-radius: 5px;
     padding: 5px 10px;
-    width: 98%;
 }
 .dropdown:hover {
     cursor: pointer;
