@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
 
 import { statesUSA, departments } from "../assets/data";
 
@@ -17,6 +19,9 @@ const CreateEmployeeForm = ({
     const [initialStartDate, setInitialStartDate] = useState(null);
     const [setDob] = useState('');
     const [startDate, setStartDate] = useState('');
+    const [open, setOpen] = useState(false);
+    const onOpenModal = () => setOpen(true);
+    const onCloseModal = () => setOpen(false);
     const [input, setInput] = useState({
         firstname: "",
         lastname: "",
@@ -38,7 +43,7 @@ const CreateEmployeeForm = ({
     const handleSubmitForm = (evt) => {
         evt.preventDefault();
         handleSubmit(input);
-        handleOpenModal();
+        onOpenModal();
     };
 
     const handleCustomInputChange = (name, value) => {
@@ -134,6 +139,9 @@ const CreateEmployeeForm = ({
             <button type="submit" className="create-employee-form-btn">
                 Save
             </button>
+            <Modal open={open} onClose={onCloseModal} center>
+                <h2>Employee successfully created !</h2>
+            </Modal>
         </form>
     );
 };
