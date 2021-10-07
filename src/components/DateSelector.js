@@ -21,10 +21,9 @@ export default function DateSelector(props) {
         "November",
         "December"
     ];
-
     return (
         <DatePicker
-            renderCustomHeader={({
+           /* renderCustomHeader={({
                                      date,
                                      changeYear,
                                      decreaseMonth,
@@ -70,7 +69,8 @@ export default function DateSelector(props) {
                         {'>'}
                     </button>
                 </div>
-            )}
+            )}*/
+            onSelected={onchange}
             selected={props.selected}
             onChange={props.onChange}
             dateFormat="dd-MM-yyyy"
