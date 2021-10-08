@@ -9,9 +9,12 @@ import '../styles/Datatables.css';
 const CurrentEmployeesPage = ({ employeesList }) => {
     const employeesData = employeesList.map((elt) => ({
         ...elt,
+        firstname: elt.firstname,
+        lastname: elt.lastname,
         department: elt.department.text,
         state: elt.state.value,
     }));
+    console.log(employeesData);
 
     return (
         <div className="current-employees">

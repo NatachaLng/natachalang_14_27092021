@@ -4,7 +4,7 @@ import { Modal } from 'react-responsive-modal';
 
 import { statesUSA, departments } from "../assets/data";
 
-import Dropdown from "./Dropdown";
+import Dropdown from "dropdown-react";
 import DateSelector from "./DateSelector";
 
 
@@ -17,7 +17,7 @@ const CreateEmployeeForm = ({
     const [initialDob, setInitialDob] = useState(null);
     const [initialStartDate, setInitialStartDate] = useState(null);
     const [setDob] = useState('');
-    const [startDate, setStartDate] = useState('');
+    const [setStartDate] = useState('');
     const [open, setOpen] = useState(false);
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
@@ -56,8 +56,11 @@ const CreateEmployeeForm = ({
         const month = date.getUTCMonth();
         const day = date.getUTCDate()+1;
         const year = date.getUTCFullYear();
-        const formattedDate = new Date(year, month, day)
+        const formattedDate = new Date(year, month, day);
         displayState(formattedDate);
+        //const dateString = date.toLocaleString();
+        //const dateArray = dateString.split(",");
+        //state(dateArray[0].replaceAll("/", "-"));
     }
 
     return (
