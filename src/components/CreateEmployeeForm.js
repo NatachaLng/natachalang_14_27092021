@@ -10,7 +10,6 @@ import DateSelector from "./DateSelector";
 
 const CreateEmployeeForm = ({
                                 handleSubmit,
-                                handleOpenModal,
                                 openedElts,
                                 handleElementsOpening,
                             }) => {
@@ -53,19 +52,12 @@ const CreateEmployeeForm = ({
         });
     };
 
-    const handleDateChange = (date) => {
-        //const dateString = date.toLocaleString('en-GB');
-        //console.log("!!!", dateString);
-        //const dateArray = dateString.split(",");
-        //displayState(date);
-        //state(dateArray[0].replaceAll("/", "-"));
-        //setInitialDob(dateString);
-        const month = date.getUTCMonth()+1;
+    const handleDateChange = (date, displayState) => {
+        const month = date.getUTCMonth();
         const day = date.getUTCDate()+1;
         const year = date.getUTCFullYear();
-        console.log(`${year}-${month}-${day}`);
-        setInitialDob("25-12-2021");
-        //setInitialDob(`${year}-${month}-${day}`);
+        const formattedDate = new Date(year, month, day)
+        displayState(formattedDate);
     }
 
     return (
@@ -89,9 +81,9 @@ const CreateEmployeeForm = ({
                 />
             </label>
             <label htmlFor="date-of-birth">Date of Birth</label>
-            <DateSelector name="date-of-birth" onChange={handleDateChange} selected={initialDob}/>
+            <DateSelector name="date-of-birth" onChange={(date) => handleDateChange(date, setInitialDob)} selected={initialDob}/>
             <label htmlFor="start-date">Start Date</label>
-            <DateSelector name="start-date" onChange={(date) => handleDateChange(date, setStartDate, setInitialStartDate)} selected={initialStartDate} />
+            <DateSelector name="start-date" onChange={(date) => handleDateChange(date, setInitialStartDate)} selected={initialStartDate} />
             <fieldset>
                 <legend>Address</legend>
                 <label>
