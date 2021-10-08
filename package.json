@@ -1,6 +1,6 @@
 {
   "name": "natachalang_14_27092021",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
