@@ -83,11 +83,11 @@ export const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 export const labels = [
     { text: "First Name", value: "firstname" },
     { text: "Last Name", value: "lastname" },
-    { text: "Start Date", value: "start" },
-    { text: "Department", value: "department" },
     { text: "Date of Birth", value: "birth" },
+    { text: "Start Date", value: "start" },
     { text: "Street", value: "street" },
     { text: "City", value: "city" },
     { text: "State", value: "state" },
     { text: "Zip Code", value: "zipCode" },
+    { text: "Department", value: "department" },
 ];

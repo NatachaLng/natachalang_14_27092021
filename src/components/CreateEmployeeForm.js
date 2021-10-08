@@ -4,7 +4,7 @@ import { Modal } from 'react-responsive-modal';
 
 import { statesUSA, departments } from "../assets/data";
 
-import Dropdown from "dropdown-react";
+import Dropdown from "dropdown-react-natacha";
 import DateSelector from "./DateSelector";
 
 
@@ -21,46 +21,84 @@ const CreateEmployeeForm = ({
     const [open, setOpen] = useState(false);
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
-    const [input, setInput] = useState({
+    /*const [input, setInput] = useState({
         firstname: "",
         lastname: "",
-        birth: "1990-01-01",
+        birth: "1990-03-01",
+        start: "1990-01-01",
         street: "",
         city: "",
         state: statesUSA[0],
         zipCode: "",
         department: departments[0],
-    });
+    });*/
 
-    const handleInputChange = (evt) => {
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
+    const [birth, setDoB] = useState(new Date("1990-01-01"));
+    const [start, setStart] = useState(new Date("1990-01-01"));
+    const [street, setStreet] = useState("");
+    const [city, setCity] = useState("");
+    const [state, setUSAState] = useState(statesUSA[0]);
+    const [zipCode, setZipCode] = useState("");
+    const [department, setDepartment] = useState(departments[0]);
+
+
+
+
+    /*const handleInputChange = (evt) => {
         setInput({
             ...input,
             [evt.target.name]: evt.target.value,
         });
-    };
+    };*/
 
     const handleSubmitForm = (evt) => {
         evt.preventDefault();
-        handleSubmit(input);
+        handleSubmit({
+            firstname,
+            lastname,
+            birth:convertDate(birth),
+            start:convertDate(start),
+            street,
+            city,
+            state,
+            zipCode,
+            department
+        });
         onOpenModal();
     };
 
-    const handleCustomInputChange = (name, value) => {
+    const convertDate = (date)=>{
+        const month = date.getUTCMonth()+1;
+        const day = date.getUTCDate()+1;
+        const year = date.getUTCFullYear();
+        return `${year}-${month}-${day}`
+    }
+
+    const update= (event, setter)=>{
+        setter(event.target.value)
+    }
+
+    /*const handleCustomInputChange = (name, value) => {
         setInput({
             ...input,
             [name]: value,
         });
-    };
+    };*/
 
-    const handleDateChange = (date, displayState) => {
+    const handleDateChange = (date, setter) => {
         const month = date.getUTCMonth();
         const day = date.getUTCDate()+1;
         const year = date.getUTCFullYear();
         const formattedDate = new Date(year, month, day);
-        displayState(formattedDate);
-        //const dateString = date.toLocaleString();
+        //displayState(formattedDate);
+        //const dateString = formattedDate.toLocaleString();
         //const dateArray = dateString.split(",");
         //state(dateArray[0].replaceAll("/", "-"));
+        //if (target === "birthDate") return setDob(formattedDate);
+        //setStartDate(formattedDate)
+        setter(formattedDate);
     }
 
     return (
@@ -70,8 +108,8 @@ const CreateEmployeeForm = ({
                 <input
                     type="text"
                     name="firstname"
-                    value={input.firstname}
-                    onChange={handleInputChange}
+                    value={firstname}
+                    onChange={(evt)=>update(evt, setFirstname)}
                 />
             </label>
             <label>
@@ -79,14 +117,14 @@ const CreateEmployeeForm = ({
                 <input
                     type="text"
                     name="lastname"
-                    value={input.lastname}
-                    onChange={handleInputChange}
+                    value={lastname}
+                    onChange={(evt)=>update(evt, setLastname)}
                 />
             </label>
             <label htmlFor="date-of-birth">Date of Birth</label>
-            <DateSelector name="date-of-birth" onChange={(date) => handleDateChange(date, setInitialDob)} selected={initialDob}/>
+            <DateSelector name="date-of-birth" onChange={(date) => handleDateChange(date, setDoB)} selected={birth}/>
             <label htmlFor="start-date">Start Date</label>
-            <DateSelector name="start-date" onChange={(date) => handleDateChange(date, setInitialStartDate)} selected={initialStartDate} />
+            <DateSelector name="start-date" onChange={(date) => handleDateChange(date, setStart)} selected={start} />
             <fieldset>
                 <legend>Address</legend>
                 <label>
@@ -94,8 +132,8 @@ const CreateEmployeeForm = ({
                     <input
                         type="text"
                         name="street"
-                        value={input.street}
-                        onChange={handleInputChange}
+                        value={street}
+                        onChange={(evt)=>update(evt, setStreet)}
                     />
                 </label>
                 <label>
@@ -103,14 +141,14 @@ const CreateEmployeeForm = ({
                     <input
                         type="text"
                         name="city"
-                        value={input.city}
-                        onChange={handleInputChange}
+                        value={city}
+                        onChange={(evt)=>update(evt, setCity)}
                     />
                 </label>
 
                 <Dropdown
-                    selectValue={input.state}
-                    handleSelectChange={handleCustomInputChange}
+                    selectValue={state}
+                    handleSelectChange={setUSAState}
                     selectLabel="State"
                     selectList={statesUSA}
                     selectName="state"
@@ -123,15 +161,15 @@ const CreateEmployeeForm = ({
                     <input
                         type="number"
                         name="zipCode"
-                        value={input.zipCode}
-                        onChange={handleInputChange}
+                        value={zipCode}
+                        onChange={(evt)=>update(evt, setZipCode)}
                     />
                 </label>
             </fieldset>
 
             <Dropdown
-                selectValue={input.department}
-                handleSelectChange={handleCustomInputChange}
+                selectValue={department}
+                handleSelectChange={setDepartment}
                 selectLabel="Department"
                 selectList={departments}
                 selectName="department"
