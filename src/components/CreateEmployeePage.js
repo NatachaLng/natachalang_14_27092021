@@ -17,7 +17,7 @@ const CreateEmployeePage = ({ handleSubmit, handleOpenModal }) => {
 
     window.onclick = function(event) {
         console.log(event)
-        if (!event.target.matches('.dropdown')) {
+        if (!event.target.matches('.dropdown-btn')) {
             setOpenElts(initialState);
             setIsOverlayActive(false);
         }
