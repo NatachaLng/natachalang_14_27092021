@@ -15,13 +15,18 @@ const CreateEmployeePage = ({ handleSubmit, handleOpenModal }) => {
     const [isOverlayActive, setIsOverlayActive] = useState(false);
     const [openedElts, setOpenElts] = useState(initialState);
 
-    const closeAllElements = () => {
-        setOpenElts(initialState);
-        setIsOverlayActive(false);
-    };
+    window.onclick = function(event) {
+        console.log(event)
+        if (!event.target.matches('.dropdown')) {
+            setOpenElts(initialState);
+            setIsOverlayActive(false);
+        }
+    }
 
     const handleElementsOpening = (elt) => {
-        if (openedElts[elt]) setIsOverlayActive(false);
+        if (openedElts[elt]) {
+            setIsOverlayActive(false);
+        }
         else setIsOverlayActive(true);
         setOpenElts({
             ...openedElts,
@@ -34,7 +39,6 @@ const CreateEmployeePage = ({ handleSubmit, handleOpenModal }) => {
             {isOverlayActive && (
                 <div
                     className="create-employee-overlay"
-                    onClick={closeAllElements}
                 ></div>
             )}
             <Banner

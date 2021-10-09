@@ -14,24 +14,9 @@ const CreateEmployeeForm = ({
                                 handleElementsOpening,
                             }) => {
 
-    const [initialDob, setInitialDob] = useState(null);
-    const [initialStartDate, setInitialStartDate] = useState(null);
-    const [setDob] = useState('');
-    const [setStartDate] = useState('');
     const [open, setOpen] = useState(false);
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
-    /*const [input, setInput] = useState({
-        firstname: "",
-        lastname: "",
-        birth: "1990-03-01",
-        start: "1990-01-01",
-        street: "",
-        city: "",
-        state: statesUSA[0],
-        zipCode: "",
-        department: departments[0],
-    });*/
 
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
@@ -43,23 +28,13 @@ const CreateEmployeeForm = ({
     const [zipCode, setZipCode] = useState("");
     const [department, setDepartment] = useState(departments[0]);
 
-
-
-
-    /*const handleInputChange = (evt) => {
-        setInput({
-            ...input,
-            [evt.target.name]: evt.target.value,
-        });
-    };*/
-
     const handleSubmitForm = (evt) => {
         evt.preventDefault();
         handleSubmit({
             firstname,
             lastname,
-            birth:convertDate(birth),
-            start:convertDate(start),
+            birth: convertDate(birth),
+            start: convertDate(start),
             street,
             city,
             state,
@@ -69,35 +44,21 @@ const CreateEmployeeForm = ({
         onOpenModal();
     };
 
-    const convertDate = (date)=>{
-        const month = date.getUTCMonth()+1;
-        const day = date.getUTCDate()+1;
+    const convertDate = (date) => {
+        const month = date.getUTCMonth() + 1;
+        const day = date.getUTCDate() + 1;
         const year = date.getUTCFullYear();
         return `${year}-${month}-${day}`
     }
 
-    const update= (event, setter)=>{
+    const update = (event, setter) => {
         setter(event.target.value)
     }
-
-    /*const handleCustomInputChange = (name, value) => {
-        setInput({
-            ...input,
-            [name]: value,
-        });
-    };*/
-
     const handleDateChange = (date, setter) => {
         const month = date.getUTCMonth();
-        const day = date.getUTCDate()+1;
+        const day = date.getUTCDate() + 1;
         const year = date.getUTCFullYear();
         const formattedDate = new Date(year, month, day);
-        //displayState(formattedDate);
-        //const dateString = formattedDate.toLocaleString();
-        //const dateArray = dateString.split(",");
-        //state(dateArray[0].replaceAll("/", "-"));
-        //if (target === "birthDate") return setDob(formattedDate);
-        //setStartDate(formattedDate)
         setter(formattedDate);
     }
 
@@ -109,7 +70,7 @@ const CreateEmployeeForm = ({
                     type="text"
                     name="firstname"
                     value={firstname}
-                    onChange={(evt)=>update(evt, setFirstname)}
+                    onChange={(evt) => update(evt, setFirstname)}
                 />
             </label>
             <label>
@@ -118,13 +79,13 @@ const CreateEmployeeForm = ({
                     type="text"
                     name="lastname"
                     value={lastname}
-                    onChange={(evt)=>update(evt, setLastname)}
+                    onChange={(evt) => update(evt, setLastname)}
                 />
             </label>
             <label htmlFor="date-of-birth">Date of Birth</label>
             <DateSelector name="date-of-birth" onChange={(date) => handleDateChange(date, setDoB)} selected={birth}/>
             <label htmlFor="start-date">Start Date</label>
-            <DateSelector name="start-date" onChange={(date) => handleDateChange(date, setStart)} selected={start} />
+            <DateSelector name="start-date" onChange={(date) => handleDateChange(date, setStart)} selected={start}/>
             <fieldset>
                 <legend>Address</legend>
                 <label>
@@ -133,7 +94,7 @@ const CreateEmployeeForm = ({
                         type="text"
                         name="street"
                         value={street}
-                        onChange={(evt)=>update(evt, setStreet)}
+                        onChange={(evt) => update(evt, setStreet)}
                     />
                 </label>
                 <label>
@@ -142,7 +103,7 @@ const CreateEmployeeForm = ({
                         type="text"
                         name="city"
                         value={city}
-                        onChange={(evt)=>update(evt, setCity)}
+                        onChange={(evt) => update(evt, setCity)}
                     />
                 </label>
 
@@ -162,7 +123,7 @@ const CreateEmployeeForm = ({
                         type="number"
                         name="zipCode"
                         value={zipCode}
-                        onChange={(evt)=>update(evt, setZipCode)}
+                        onChange={(evt) => update(evt, setZipCode)}
                     />
                 </label>
             </fieldset>
