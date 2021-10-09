@@ -6,7 +6,7 @@ import { statesUSA, departments } from "../assets/data";
 
 import Dropdown from "dropdown-react-natacha";
 import DateSelector from "./DateSelector";
-
+import moment from "moment";
 
 const CreateEmployeeForm = ({
                                 handleSubmit,
@@ -20,13 +20,15 @@ const CreateEmployeeForm = ({
 
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
+    const today = moment().format("YYYY-MM-DD")
     const [birth, setDoB] = useState(new Date("1990-01-01"));
-    const [start, setStart] = useState(new Date("1990-01-01"));
+    const [start, setStart] = useState(new Date(today));
     const [street, setStreet] = useState("");
     const [city, setCity] = useState("");
     const [state, setUSAState] = useState(statesUSA[0]);
     const [zipCode, setZipCode] = useState("");
     const [department, setDepartment] = useState(departments[0]);
+
 
     const handleSubmitForm = (evt) => {
         evt.preventDefault();
@@ -82,10 +84,10 @@ const CreateEmployeeForm = ({
                     onChange={(evt) => update(evt, setLastname)}
                 />
             </label>
-            <label htmlFor="date-of-birth">Date of Birth</label>
-            <DateSelector name="date-of-birth" onChange={(date) => handleDateChange(date, setDoB)} selected={birth}/>
-            <label htmlFor="start-date">Start Date</label>
-            <DateSelector name="start-date" onChange={(date) => handleDateChange(date, setStart)} selected={start}/>
+            <label htmlFor="date-of-birth">Date of Birth
+            <DateSelector name="date-of-birth" onChange={(date) => handleDateChange(date, setDoB)} selected={birth}/></label>
+            <label htmlFor="start-date">Start Date
+            <DateSelector name="start-date" onChange={(date) => handleDateChange(date, setStart)} selected={start}/></label>
             <fieldset>
                 <legend>Address</legend>
                 <label>

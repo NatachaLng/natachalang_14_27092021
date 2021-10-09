@@ -34,9 +34,9 @@
 .create-employee-form-btn {
     font-size: 1.2rem;
     padding: 5px;
-    color: #93ad18;
+    color: #596E08;
     font-weight: 500;
-    border: 2px solid #93ad18;
+    border: 2px solid #596E08;
     background-color: #fff;
     margin-top: 20px;
     border-radius: 5px;
@@ -44,7 +44,7 @@
 .create-employee-form-btn:hover {
     cursor: pointer;
     color: #fff;
-    background-color: #93ad18;
+    background-color: #596E08;
 }
 .create-employee-overlay {
     width: 100%;

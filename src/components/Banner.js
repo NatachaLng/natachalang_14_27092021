@@ -8,7 +8,7 @@ const Banner = ({ pageTitle, linkContent, linkSrc }) => {
     return (
         <div className="banner">
             <h1>HRNet</h1>
-            <img src={logo}/><br/>
+            <img src={logo} alt='Wealth health logo'/><br/>
             <Link to={linkSrc}>{linkContent}</Link>
             <h2>{pageTitle}</h2>
         </div>
