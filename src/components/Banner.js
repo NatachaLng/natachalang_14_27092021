@@ -4,6 +4,15 @@ import { Link } from "react-router-dom";
 import "../styles/Banner.css"
 import logo from "../assets/logo.jpg"
 
+/**
+ * Banner on each page
+ * @param pageTitle {string}
+ * @param linkContent {string}
+ * @param linkSrc {string}
+ * @return {JSX.Element}
+ * @constructor
+ */
+
 const Banner = ({ pageTitle, linkContent, linkSrc }) => {
     return (
         <div className="banner">

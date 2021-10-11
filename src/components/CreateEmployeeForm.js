@@ -8,6 +8,15 @@ import Dropdown from "dropdown-react-natacha";
 import DateSelector from "./DateSelector";
 import moment from "moment";
 
+
+/**
+ * Form to create an employee
+ * @param handleSubmit - submit the form
+ * @param openedElts - check opened elements
+ * @param handleElementsOpening - handle the element opening
+ * @return {JSX.Element}
+ * @constructor
+ */
 const CreateEmployeeForm = ({
                                 handleSubmit,
                                 openedElts,
@@ -29,7 +38,10 @@ const CreateEmployeeForm = ({
     const [zipCode, setZipCode] = useState("");
     const [department, setDepartment] = useState(departments[0]);
 
-
+    /**
+     * function that submit the form
+     * @param evt
+     */
     const handleSubmitForm = (evt) => {
         evt.preventDefault();
         handleSubmit({
@@ -45,17 +57,31 @@ const CreateEmployeeForm = ({
         });
         onOpenModal();
     };
-
+    /**
+     * function that convert the date to the correct format
+     * @param date 
+     * @return {string}
+     */
     const convertDate = (date) => {
         const month = date.getUTCMonth() + 1;
         const day = date.getUTCDate() + 1;
         const year = date.getUTCFullYear();
         return `${year}-${month}-${day}`
     }
-
+    /**
+     * Function that update the value via the setter
+     * @param event
+     * @param setter
+     */
     const update = (event, setter) => {
         setter(event.target.value)
     }
+
+    /**
+     * function that handle the date change
+     * @param date
+     * @param setter
+     */
     const handleDateChange = (date, setter) => {
         const month = date.getUTCMonth();
         const day = date.getUTCDate() + 1;

@@ -1,7 +1,6 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import PropTypes from 'prop-types';
 
 export default function DateSelector(props) {
     return (
@@ -14,9 +13,3 @@ export default function DateSelector(props) {
     />
 );
 };
-
-DateSelector.propTypes = {
-    name: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-    selected: PropTypes.string
-}

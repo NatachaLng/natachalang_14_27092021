@@ -6,6 +6,12 @@ import { labels } from "../assets/data";
 import Banner from "./Banner";
 import '../styles/Datatables.css';
 
+/**
+ * Page listing employees
+ * @param employeesList {array}
+ * @return {JSX.Element}
+ * @constructor
+ */
 const CurrentEmployeesPage = ({ employeesList }) => {
     const employeesData = employeesList.map((elt) => ({
         ...elt,

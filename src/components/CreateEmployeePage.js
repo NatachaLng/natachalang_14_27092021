@@ -5,6 +5,13 @@ import "../styles/CreateEmployee.css"
 import Banner from "./Banner";
 import CreateEmployeeForm from "./CreateEmployeeForm";
 
+/**
+ * Page with the form to create an employee
+ * @param handleSubmit - submission of the form
+ * @param handleOpenModal - opening of the success modal once employee has been created
+ * @return {JSX.Element}
+ * @constructor
+ */
 const CreateEmployeePage = ({ handleSubmit, handleOpenModal }) => {
     const initialState = {
         birth: false,
@@ -21,7 +28,10 @@ const CreateEmployeePage = ({ handleSubmit, handleOpenModal }) => {
             setIsOverlayActive(false);
         }
     }
-
+    /**
+     * function that open elements depending on the user action
+     * @param elt
+     */
     const handleElementsOpening = (elt) => {
         if (openedElts[elt]) {
             setIsOverlayActive(false);
