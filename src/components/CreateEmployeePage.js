@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import "../styles/CreateEmployee.css"
-
 import Banner from "./Banner";
 import CreateEmployeeForm from "./CreateEmployeeForm";
 
@@ -23,23 +22,25 @@ const CreateEmployeePage = ({ handleSubmit, handleOpenModal }) => {
     const [openedElts, setOpenElts] = useState(initialState);
 
     window.onclick = function(event) {
-        if (!event.target.matches('.dropdown-btn')) {
+        if (!event.target.closest('.dropdown-btn')) {
+            console.log("....")
             setOpenElts(initialState);
             setIsOverlayActive(false);
         }
     }
     /**
      * function that open elements depending on the user action
+
      * @param elt
      */
     const handleElementsOpening = (elt) => {
-        if (openedElts[elt]) {
+        if (openedElts[elt.selectName]) {
             setIsOverlayActive(false);
         }
         else setIsOverlayActive(true);
         setOpenElts({
             ...openedElts,
-            [elt]: !openedElts[elt],
+            [elt.selectName]: !openedElts[elt.selectName]
         });
     };
 

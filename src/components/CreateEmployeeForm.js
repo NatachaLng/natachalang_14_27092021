@@ -59,7 +59,7 @@ const CreateEmployeeForm = ({
     };
     /**
      * function that convert the date to the correct format
-     * @param date 
+     * @param date
      * @return {string}
      */
     const convertDate = (date) => {
